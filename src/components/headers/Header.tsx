@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import React from 'react';
 
+import Button from '@/components/buttons/Button';
 import UnderlineLink from '@/components/links/UnderlineLink';
 
 const Header = () => {
@@ -30,6 +31,15 @@ const Header = () => {
         <UnderlineLink href='/' className='link'>
           Support
         </UnderlineLink>
+      </div>
+      <div className='flex items-center space-x-4'>
+        <Button
+          variant='primary'
+          className='bg-brand-600 hover:bg-brand-700 text-white'
+        >
+          Open Discord
+        </Button>
+        <Button className='hover:text-brand-500 text-white'>Login</Button>
       </div>
     </header>
   );
