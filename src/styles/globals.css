@@ -115,4 +115,10 @@
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;
   }
+
+  @layer components {
+    .Link {
+      @apply cursor-pointer font-semibold text-sm text-white hover:underline;
+    }
+  }
 }
