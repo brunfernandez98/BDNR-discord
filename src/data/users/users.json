@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "username": "tomasdilema",
+    "hastagh": "1889",
+    "email": "tomasdilema@gmail.com",
+    "avatar": "./images/users/user-1.gif",
+    "channel": [1, 2]
+  },
+  {
+    "id": 2,
+    "username": "brunfernandezrod98",
+    "hastagh": "1943",
+    "email": "brunfernandezrod98@gmail.com",
+    "avatar": "./images/users/user-2.gif",
+    "channel": [1, 2]
+  },
+  {
+    "id": 3,
+    "username": "martinAristov",
+    "hastagh": "1998",
+    "email": "martinAristov@gmail.com",
+    "avatar": "./images/users/user-3.gif",
+    "channel": [1, 2]
+  },
+  {
+    "id": 4,
+    "username": "juanEmilioGabito",
+    "hastagh": "1899",
+    "email": "juanEmilioGabito@gmail.com",
+    "avatar": "./images/users/user-4.gif",
+    "channel": [3]
+  }
+]

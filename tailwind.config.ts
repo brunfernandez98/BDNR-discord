@@ -6,7 +6,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Inter', ...defaultTheme.fontFamily.sans],
+        primary: ['Noto', ...defaultTheme.fontFamily.sans],
+      },
+      height: {
+        '83vh': '83vh',
       },
       colors: {
         primary: {
@@ -24,6 +27,22 @@ export default {
           950: 'rgb(var(--tw-color-primary-950) / <alpha-value>)',
         },
         dark: '#222222',
+        discord_blue: '#295DE7',
+        discord_blurple: '#7289DA',
+        discord_purple: '#5865f2',
+        discord_magenta: '#EB459E',
+        discord_pink: '#F04747',
+        discord_red: '#ED4245',
+        discord_orange: '#F26522',
+        discord_yellow: '#FEE75C',
+        discord_green: '#3BA55C',
+        discord_cyan: '#1EAECD',
+        discord_white: '#FFFFFF',
+        discord_grey: '#4E5058',
+        discord_darkgrey: '#313338',
+        discord_greyletter: '#B4B9C0',
+        discord_lightgreyletter: '#8b8e9c',
+        discord_dark: '#2B2D31',
       },
       keyframes: {
         flicker: {
