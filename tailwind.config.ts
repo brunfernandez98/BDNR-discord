@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Noto', ...defaultTheme.fontFamily.sans],
+        primary: ['Sans', ...defaultTheme.fontFamily.sans],
       },
       height: {
         '83vh': '83vh',
@@ -43,6 +43,10 @@ export default {
         discord_greyletter: '#B4B9C0',
         discord_lightgreyletter: '#8b8e9c',
         discord_dark: '#2B2D31',
+        discord_chatHeader: '#72767d',
+        discord_userSectionText: '#b9bbbe',
+        discord_chatHeaderInputBg: '#202225',
+        discord_messageTimeStamp: '#72767d',
       },
       keyframes: {
         flicker: {

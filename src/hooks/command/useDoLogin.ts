@@ -2,6 +2,8 @@ import { useCallback, useState } from 'react';
 
 import { useAppDispatch } from '@/hooks';
 
+import { UserCredential } from '@/data/types';
+
 import { setUser } from '@/stores/mainSlice';
 
 const useDoLogin = () => {

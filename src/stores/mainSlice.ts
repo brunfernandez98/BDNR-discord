@@ -1,10 +1,13 @@
 import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
 
+import { User } from '@/data/types';
+
 interface MainState {
   id: number | null;
   email: null | string;
   username: string | null;
   avatar: string | null;
+  hastagh: string | null;
 }
 
 const initialState: MainState = {
@@ -12,6 +15,7 @@ const initialState: MainState = {
   email: '',
   username: '',
   avatar: '',
+  hastagh: '',
 };
 
 export const mainSlice: Slice<MainState> = createSlice({
@@ -23,6 +27,7 @@ export const mainSlice: Slice<MainState> = createSlice({
       state.email = action.payload.email;
       state.username = action.payload.username;
       state.avatar = action.payload.avatar;
+      state.hastagh = action.payload.hastagh;
     },
     cleanSession: (state) => {
       state.id = null;

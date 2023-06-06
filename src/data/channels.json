@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "serverId": 1,
+    "users": [1, 2, 3, 4],
+    "name": "Integridad"
+  },
+  {
+    "id": 2,
+    "serverId": 1,
+    "users": [1, 2, 3, 4],
+    "name": "NoSQL"
+  },
+  {
+    "id": 3,
+    "serverId": 2,
+    "users": [1, 2, 3],
+    "name": "Stephen Curry"
+  },
+  {
+    "id": 4,
+    "serverId": 2,
+    "users": [1, 2, 3],
+    "name": "NBA FINALS 2023"
+  },
+  {
+    "id": 5,
+    "serverId": 3,
+    "users": [1, 2, 3],
+    "name": "RDR 2 Mods"
+  },
+  {
+    "id": 6,
+    "serverId": 3,
+    "users": [1, 2, 3, 4],
+    "name": "Arthur Morgan"
+  }
+]

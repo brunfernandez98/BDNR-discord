@@ -1,22 +1,33 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 
 import useDoLogin from '@/hooks/command/useDoLogin';
 
-import users from '@/data/users/users.json';
+import { UserCredential } from '@/data/types';
+import users from '@/data/users.json';
 
 import LoadingCube from '@/components/loading/loading';
 
 const Login = () => {
-  const { handleLogin, error, loading } = useDoLogin(); // You can pass the 'credential' parameter if required
+  const { handleLogin, error, loading } = useDoLogin();
 
-  const doLogin = async ({ id, username, email, avatar }: UserCredential) => {
+  const router = useRouter();
+
+  const doLogin = async ({
+    id,
+    username,
+    email,
+    avatar,
+    hastagh,
+  }: UserCredential) => {
     await handleLogin({
       id,
       username,
       email,
       avatar,
+      hastagh,
     });
-    console.log('entro');
+    await router.push('/home');
   };
 
   return (
@@ -61,6 +72,7 @@ const Login = () => {
                           username: user.username,
                           email: user.email,
                           avatar: user.avatar,
+                          hastagh: user.hastagh,
                         })
                       }
                       className='cursor-newtab bg-discord_grey hover:bg-discord_lightgreyletter focus:shadow-outline rounded px-2 py-2 text-xs text-white focus:outline-none'
