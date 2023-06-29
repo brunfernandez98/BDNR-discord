@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+#__next {
+  height: 100vh; /* Establece la altura al 100% del viewport */
+  overflow: hidden; /* Oculta cualquier desbordamiento de contenido */
+  overflow-y: hidden;
+}
+
 :root {
   /* #region  /**=========== Primary Color =========== */
   /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
@@ -28,6 +34,13 @@
   /* #endregion  /**======== Primary Color =========== */
 }
 
+@layer components {
+
+  .server-default {
+    @apply h-12 w-12 bg-[#36393f] rounded-full flex justify-center items-center cursor-newtab  hover:rounded-2xl transition-all duration-100 ease-out;
+  }
+}
+
 @layer base {
   /* inter var - latin */
   @font-face {
@@ -38,6 +51,8 @@
     src: url('/fonts/noto-sans.woff') format('woff');
     
   }
+
+
 
   .cursor-newtab {
     cursor: url('/images/new-tab.png') 10 10, pointer;
@@ -117,6 +132,10 @@
   @layer components {
     .Link {
       @apply cursor-pointer font-semibold text-sm text-white hover:underline;
+    }
+    
+    .icon {
+      @apply h-7 text-discord_userSectionText
     }
   }
 }

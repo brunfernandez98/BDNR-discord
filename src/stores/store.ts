@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
+import channelSlice from './channelSlice';
 import mainReducer from './mainSlice';
 
 export const store = configureStore({
   reducer: {
     main: mainReducer,
+    channel: channelSlice,
   },
 });
 

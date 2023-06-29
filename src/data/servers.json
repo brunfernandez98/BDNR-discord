@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Universidad ORT",
+    "image": "https://pbs.twimg.com/profile_images/583634654978297856/BNUeB1il_400x400.jpg",
+    "isHovered": false,
+    "users": [1, 2, 3, 4]
+  },
+  {
+    "id": 2,
+    "name": "NBA",
+    "image": "https://static-s.aa-cdn.net/img/gp/20600015101044/AKmReVLZ_YsDBHHGBm5V55tDLGzdGtpppZ0VhGggdivAEhSEBWwnQbK2LRMmm1ZW7faJ?v=1",
+    "isHovered": false,
+    "users": [1, 2, 3]
+  },
+  {
+    "id": 3,
+    "name": "RED DEAD REDEMPTION 2",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTdGSqlzydZkbNafrcGzeARhi_btMRQGjV4w&usqp=CAU",
+    "isHovered": false,
+    "users": [1, 2, 3]
+  },
+  {
+    "id": 4,
+    "name": "DAYZ",
+    "image": "https://www.speedrun.com/gameasset/nd285zqd/cover?v=0a1deb7",
+    "isHovered": false,
+    "users": [1, 2, 3, 4]
+  }
+]
