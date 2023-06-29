@@ -34,6 +34,13 @@ export const queryMessagesElastic = async (
       body.query.bool.must.push({ term: { hashtags: searchQuery } });
     } else if (searchOption === 'text') {
       body.query.bool.must.push({ match: { text: searchQuery } });
+    } else if (
+      searchOption === 'video' ||
+      searchOption === 'file' ||
+      searchOption === 'audio' ||
+      searchOption === 'image'
+    ) {
+      body.query.bool.must.push({ multimedia: { field: searchOption } });
     }
 
     const result = await context.elasticClient.search({
