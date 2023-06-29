@@ -15,6 +15,10 @@ export const queryMessagesElastic = async (
       },
     };
 
+    console.log(searchQuery);
+
+    console.log('hola', searchOption);
+
     if (searchOption === 'link') {
       body.query.bool.must.push({ exists: { field: 'link' } });
     } else if (searchOption === 'creation_date' && selectedDate) {
@@ -40,8 +44,6 @@ export const queryMessagesElastic = async (
     if (result?.hits?.total.value === 0) {
       return [];
     }
-
-    console.log(result);
 
     const messages: MessageResponseElastic[] = result?.hits?.hits.map(
       (hit: any) => {

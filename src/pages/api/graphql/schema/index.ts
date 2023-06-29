@@ -3,23 +3,13 @@ import { gql } from 'graphql-tag';
 const typeDefs = gql`
   type Query {
     getChannelMessages(input: GetMessageInput!): ResponseMessage
-    queryMessagesElastic(
-      searchQuery: String
-      searchOption: String
-      selectedDate: String
-    ): [MessageElastic!]!
+    queryMessagesElastic(input: GetQueryInput!): ResponseMessageElastic
   }
 
   type Mutation {
     sendMessage(input: MessageInput!): Response!
     sendMessageElastic(input: MessageInputElastic!): Response!
     generateScript(input: Boolean): Response!
-  }
-
-  enum Multimedia {
-    Image
-    Video
-    Audio
   }
 
   type Message {
@@ -40,7 +30,7 @@ const typeDefs = gql`
     channel: String
     user: String
     text: String
-    multimedia: Multimedia
+    multimedia: String
     links: [String]
     hashtags: [String]
     mentioned_users: [String]
@@ -59,6 +49,11 @@ const typeDefs = gql`
     data: [Message]
   }
 
+  type ResponseMessageElastic {
+    error: String
+    data: [MessageElastic]
+  }
+
   input MessageInput {
     channel_id: ID
     user_id: ID
@@ -75,11 +70,17 @@ const typeDefs = gql`
     server_id: ID
   }
 
+  input GetQueryInput {
+    searchQuery: String
+    searchOption: String
+    selectedDate: String
+  }
+
   input MessageInputElastic {
     message_id: ID
     channel: String
     user: String
-    multimedia: Multimedia
+    multimedia: String
     text: String
     links: [String]
     hashtags: [String]

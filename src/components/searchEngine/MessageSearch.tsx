@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 
+import useGetMessages from '@/hooks/query/useGetMessagesElastic';
+
 const MessageSearch = ({ onSubmit }: any) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchOption, setSearchOption] = useState('');
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState('');
 
+  const { handleGetMessage, loading, data } = useGetMessages();
+
   const handleSearch = () => {
-    onSubmit(searchQuery, searchOption, selectedDate);
-    setSearchQuery('');
-    setSelectedDate('');
+    console.log(searchOption);
+    handleGetMessage(searchQuery, searchOption, selectedDate);
+    console.log(data);
+    onSubmit(data);
   };
 
   const handleOptionChange = (option: string) => {
@@ -76,6 +81,17 @@ const MessageSearch = ({ onSubmit }: any) => {
             className='mr-1'
           />
           Fecha de creación
+        </label>
+        <label className='mr-2 text-white'>
+          <input
+            type='radio'
+            name='searchOption'
+            value='text'
+            checked={searchOption === 'text'}
+            onChange={() => handleOptionChange('text')}
+            className='mr-1'
+          />
+          Texto
         </label>
         <label className='mr-2 text-white'>
           <input

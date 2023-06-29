@@ -4,8 +4,7 @@
 
 #__next {
   height: 100vh; /* Establece la altura al 100% del viewport */
-  overflow: hidden; /* Oculta cualquier desbordamiento de contenido */
-  overflow-y: hidden;
+
 }
 
 :root {
