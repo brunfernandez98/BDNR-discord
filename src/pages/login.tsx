@@ -13,6 +13,10 @@ const Login = () => {
 
   const router = useRouter();
 
+  const openSearchEngine = () => {
+    router.push('/searchEngine');
+  };
+
   const doLogin = async ({
     id,
     username,
@@ -83,6 +87,15 @@ const Login = () => {
                   </div>
                 </div>
               ))}
+              <div className='ml-auto'>
+                <button
+                  onClick={openSearchEngine}
+                  className='cursor-newtab bg-discord_grey hover:bg-discord_lightgreyletter focus:shadow-outline rounded px-2 py-2 text-xs text-white focus:outline-none'
+                  type='button'
+                >
+                  Open SearchEngine
+                </button>
+              </div>
             </div>
           </div>
         </div>

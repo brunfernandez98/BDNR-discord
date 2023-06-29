@@ -8,3 +8,12 @@ export const SEND_MESSAGE = gql`
     }
   }
 `;
+
+export const SEND_MESSAGE_ELASTIC = gql`
+  mutation sendMessageElastic($input: MessageInputElastic!) {
+    sendMessageElastic(input: $input) {
+      error
+      message
+    }
+  }
+`;

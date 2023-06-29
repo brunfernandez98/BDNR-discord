@@ -1,19 +1,20 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v1 as uuidv1 } from 'uuid';
 
 import { MessageInput } from '@/data/types';
-
 const query = `
   INSERT INTO discord.messages (
     id,
     channel_id,
     user_id,
     text,
+    links,
+    hashtags,
     mentioned_users,
     pinned,
     creation_date,
     server_id
   )
-  VALUES (?, ?, ?, ?, ?, ?, toTimestamp(now()), ?)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, toTimestamp(now()), ?)
 `;
 
 export const sendMessage = async (
@@ -21,6 +22,8 @@ export const sendMessage = async (
     channel_id,
     user_id,
     text,
+    links,
+    hashtags,
     mentioned_users,
     pinned,
     server_id,
@@ -28,13 +31,14 @@ export const sendMessage = async (
   context: any
 ) => {
   try {
-    const id = uuidv4();
-
+    const id = uuidv1();
     const params = [
       id,
       channel_id,
       user_id,
       text,
+      links,
+      hashtags,
       mentioned_users,
       pinned,
       server_id,

@@ -3,6 +3,7 @@ import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { NextRequest } from 'next/server';
 
 import cassandraClient from '@/pages/api/graphql/repositories/cassandra';
+import elasticClient from '@/pages/api/graphql/repositories/elasticSearch';
 import resolvers from '@/pages/api/graphql/resolvers';
 import typeDefs from '@/pages/api/graphql/schema';
 
@@ -22,7 +23,7 @@ cassandraClient
 
 // req has the type NextRequest
 const handler = startServerAndCreateNextHandler<NextRequest>(server, {
-  context: async (req) => ({ req, cassandraClient }),
+  context: async (req) => ({ req, cassandraClient, elasticClient }),
 });
 
 export default handler;

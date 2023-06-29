@@ -9,17 +9,20 @@ const useGetMessages = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<MessageResponse[]>();
 
-  const handleGetMessage = useCallback(async (channel_id: number) => {
-    setLoading(true);
-    try {
-      const messageResponse = await getMessagesService(channel_id);
-      setData(messageResponse.data);
-    } catch (err) {
-      setError('Error interno');
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const handleGetMessage = useCallback(
+    async (channel_id: number, server_id: number) => {
+      setLoading(true);
+      try {
+        const messageResponse = await getMessagesService(channel_id, server_id);
+        setData(messageResponse.data);
+      } catch (err) {
+        setError('Error interno');
+      } finally {
+        setLoading(false);
+      }
+    },
+    []
+  );
 
   return { error, loading, handleGetMessage, data };
 };

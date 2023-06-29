@@ -8,6 +8,8 @@ export const GET_CHANNEL_MESSAGES = gql`
         id
         channel_id
         user_id
+        links
+        hashtags
         text
         mentioned_users
         pinned

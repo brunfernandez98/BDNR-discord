@@ -21,6 +21,7 @@ import { MessageResponse } from '@/data/types';
 import users from '@/data/users.json';
 
 import Message from '@/components/chat/Message';
+import Search from '@/components/Search';
 
 type Props = {
   user_id: number;
@@ -46,14 +47,28 @@ const Chat = ({ user_id, server_id }: Props) => {
   const sendMessage = handleSubmit((data: any) => {
     const message = data.message;
 
+    const links: string[] = message.match(/(https?:\/\/[^\s]+)/g) || [];
+    const hashtags: string[] = message.match(/#(\w+)/g) || [];
+
+    const mentionedUsers: number[] = (message.match(/@(\w+)/g) || [])
+      .map((mention: string) => {
+        const username = mention.substring(1);
+        const user = users.find((user) => user.username === username);
+        return user ? user.id : null;
+      })
+      .filter((userId: number | null) => userId !== null);
+
     handleSendMessage({
       channel_id: channel.channel_id || -1,
       user_id: user_id,
       text: message,
+      links: links,
+      hashtags: hashtags,
       pinned: false,
       server_id: server_id,
-      mentioned_users: [],
+      mentioned_users: mentionedUsers,
     });
+
     scrollToBottom();
     reset();
   });
@@ -62,20 +77,20 @@ const Chat = ({ user_id, server_id }: Props) => {
     let interval: NodeJS.Timeout;
 
     if (channel.channel_id) {
-      getMessages(channel.channel_id);
+      getMessages(channel.channel_id || -1, server_id);
 
       interval = setInterval(() => {
-        getMessages(channel.channel_id || -1);
+        getMessages(channel.channel_id || -1, server_id);
       }, 5000);
     }
 
     return () => {
       clearInterval(interval);
     };
-  }, [channel.channel_id]);
+  }, [channel.channel_id, server_id]);
 
-  const getMessages = async (channel_id: number) => {
-    const newMessages = await handleGetMessage(channel_id);
+  const getMessages = async (channel_id: number, server_id: number) => {
+    await handleGetMessage(channel_id, server_id);
     setMessages(data || []);
   };
 
@@ -92,14 +107,7 @@ const Chat = ({ user_id, server_id }: Props) => {
           <UsersIcon className='icon' />
 
           <div className='bg-discord_chatHeaderInputBg flex rounded-md p-1 text-xs'>
-            <input
-              type='text'
-              placeholder='Search'
-              className='placeholder-discord_chatHeader border-none bg-transparent pl-1 text-xs text-white focus:shadow-none focus:outline-none focus:ring-0'
-              style={{
-                padding: '2px',
-              }}
-            />
+            <Search />
             <MagnifyingGlassIcon className='text-discord_chatHeader mr-1 h-5' />
           </div>
           <InboxIcon className='icon' />
@@ -119,9 +127,9 @@ const Chat = ({ user_id, server_id }: Props) => {
               data.map((message) => {
                 const {
                   id,
-                  channel_id,
                   user_id,
                   text,
+                  links,
                   mentioned_users,
                   pinned,
                   creation_date,
@@ -133,7 +141,9 @@ const Chat = ({ user_id, server_id }: Props) => {
                   <Message
                     key={id}
                     id={id}
+                    mentionedUser={mentioned_users}
                     isLoading={false}
+                    links={links}
                     message={text}
                     timestamp={creation_date}
                     username={userReal?.username || 'Unknown'}

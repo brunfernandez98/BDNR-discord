@@ -39,10 +39,24 @@ export type Message = {
 export type MessageInput = {
   channel_id: number;
   user_id: number;
+  hashtags?: string[];
+  links?: string[];
   text: string;
-  mentioned_users: number[];
-  pinned: boolean;
+  mentioned_users?: number[];
+  pinned?: boolean;
   server_id: number;
+};
+
+export type MessageInputElastic = {
+  message_id?: string;
+  channel: string;
+  user: string;
+  text: string;
+  links?: string[];
+  hashtags?: string[];
+  mentioned_users?: string[];
+  pinned: boolean;
+  creation_date: string;
 };
 
 export type MessageResponse = {
@@ -50,8 +64,24 @@ export type MessageResponse = {
   channel_id: number;
   user_id: number;
   text: string;
+  links: string[];
+  hashtags: string[];
   mentioned_users: number[];
   creation_date: string;
   pinned: boolean;
   server_id: number;
+};
+
+export type MessageResponseElastic = {
+  id: number;
+  channel: string;
+  user: string;
+  text: string;
+  links: string[];
+  hashtags: string[];
+  multimedia: string;
+  mentioned_users: number[];
+  creation_date: string;
+  pinned: boolean;
+  server: string;
 };
