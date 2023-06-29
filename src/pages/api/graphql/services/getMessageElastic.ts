@@ -15,6 +15,10 @@ export const queryMessagesElastic = async (
       },
     };
 
+    console.log(searchQuery);
+
+    console.log('hola', searchOption);
+
     if (searchOption === 'link') {
       body.query.bool.must.push({ exists: { field: 'link' } });
     } else if (searchOption === 'creation_date' && selectedDate) {
@@ -30,6 +34,13 @@ export const queryMessagesElastic = async (
       body.query.bool.must.push({ term: { hashtags: searchQuery } });
     } else if (searchOption === 'text') {
       body.query.bool.must.push({ match: { text: searchQuery } });
+    } else if (
+      searchOption === 'video' ||
+      searchOption === 'file' ||
+      searchOption === 'audio' ||
+      searchOption === 'image'
+    ) {
+      body.query.bool.must.push({ multimedia: { field: searchOption } });
     }
 
     const result = await context.elasticClient.search({
@@ -40,8 +51,6 @@ export const queryMessagesElastic = async (
     if (result?.hits?.total.value === 0) {
       return [];
     }
-
-    console.log(result);
 
     const messages: MessageResponseElastic[] = result?.hits?.hits.map(
       (hit: any) => {

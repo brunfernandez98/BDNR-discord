@@ -2,17 +2,27 @@ import React from 'react';
 
 const MessageView = ({ messages }: any) => {
   return (
-    <div>
+    <div className='overflow-auto'>
       <h2 className='mb-4 text-2xl font-bold text-white'>
         Visualizar Mensajes
       </h2>
-      {messages.map((message: any) => (
-        <div className='mb-4 rounded-md bg-gray-800 p-4' key={message.id}>
-          <p className='text-white'>ID del Canal: {message.channelId}</p>
-          <p className='text-white'>ID del Usuario: {message.userId}</p>
-          <p className='text-white'>Mensaje: {message.message}</p>
-        </div>
-      ))}
+      {}
+      {messages != undefined && messages.length > 0 ? (
+        messages?.map((message: any) => (
+          <div
+            className='mb-4 overflow-auto rounded-md bg-gray-800 p-4'
+            key={message.id}
+          >
+            <p className='text-white'>Servidor: {message?.server}</p>
+            <p className='text-white'>Canal: {message?.canal}</p>
+            <p className='text-white'>Usuario: {message?.user}</p>
+            <p className='text-white'>Mensaje: {message?.text}</p>
+            <p className='text-white'>Fecha: {message?.date}</p>
+          </div>
+        ))
+      ) : (
+        <p className='text-white'>No hay mensajes</p>
+      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { v1 as uuidv1 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import { MessageInputElastic } from '@/data/types';
 
@@ -17,7 +17,7 @@ export const sendMessageElastic = async (
   context: any
 ) => {
   try {
-    const id = message_id || uuidv1();
+    const id = uuidv4();
 
     const formattedCreationDate = creation_date || new Date().toISOString();
 

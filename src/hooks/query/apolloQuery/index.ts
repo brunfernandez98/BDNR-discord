@@ -19,3 +19,24 @@ export const GET_CHANNEL_MESSAGES = gql`
     }
   }
 `;
+
+export const QUERY_MESSAGES_ELASTIC = gql`
+  query queryMessagesElastic($input: GetQueryInput!) {
+    queryMessagesElastic(input: $input) {
+      error
+      data {
+        id
+        channel
+        user
+        text
+        links
+        hashtags
+        multimedia
+        mentioned_users
+        pinned
+        server
+        creation_date
+      }
+    }
+  }
+`;

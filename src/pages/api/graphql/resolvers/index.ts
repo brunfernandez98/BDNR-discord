@@ -18,17 +18,19 @@ const resolvers = {
         data,
       };
     },
-    queryMessagesElastic: async (
-      _: any,
-      { searchQuery, searchOption, selectedDate }: any,
-      context: any
-    ) => {
-      return queryMessagesElastic(
+    queryMessagesElastic: async (parent: any, args: any, context: any) => {
+      const { input } = args;
+      const { searchQuery, searchOption, selectedDate } = input;
+      const result = queryMessagesElastic(
         searchQuery,
         searchOption,
         selectedDate,
         context
       );
+      return {
+        error: null,
+        data: result,
+      };
     },
   },
   Mutation: {
