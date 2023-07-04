@@ -14,10 +14,10 @@ const MessageView = ({ messages }: any) => {
             key={message.id}
           >
             <p className='text-white'>Servidor: {message?.server}</p>
-            <p className='text-white'>Canal: {message?.canal}</p>
+            <p className='text-white'>Canal: {message?.channel}</p>
             <p className='text-white'>Usuario: {message?.user}</p>
             <p className='text-white'>Mensaje: {message?.text}</p>
-            <p className='text-white'>Fecha: {message?.date}</p>
+            <p className='text-white'>Fecha: {message?.creation_date}</p>
           </div>
         ))
       ) : (
