@@ -68,7 +68,9 @@ const SearchEngine = () => {
             <MessageInsert onSubmit={handleInsertSubmit} />
           </>
         )}
-        {searchData && <MessageView messages={searchData} />}
+        {activeTab === 'search' && searchData && (
+          <MessageView messages={searchData} />
+        )}
       </div>
     </div>
   );
